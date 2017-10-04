@@ -9,6 +9,7 @@
             <a href="/"><h1>OLLIE</h1></a>
             {% if user.is_authenticated %}
               <a href="{% url 'logout' %}">logout</a>
+              <!-- if pet exists, show pet and link to edit; else link to add pet -->
             {% else %}
               <a href="{% url 'login' %}">Log In</a> / <a href="{% url 'signup' %}">START TRIAL</a>
             {% endif %}

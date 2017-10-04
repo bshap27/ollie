@@ -3,11 +3,6 @@ from .models import Pet
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 
-# class UserForm(forms.ModelForm):
-
-#     class Meta:
-#         model = User
-#         fields = ('name', 'email',)
 
 class PetForm(forms.ModelForm):
 

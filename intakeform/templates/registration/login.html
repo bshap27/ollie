@@ -4,7 +4,8 @@
 
 {% block content %}
   <h2>Login</h2>
-  <form method="post">
+  <form method="post"> 
+  	<!-- I'd like the Username field in the login form to read "email"... this comes from django built in auth forms -->
     {% csrf_token %}
     {{ form.as_p }}
     <button type="submit">Login</button>
