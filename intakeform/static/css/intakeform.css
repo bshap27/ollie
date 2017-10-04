@@ -1,0 +1,37 @@
+@font-face {
+  font-family: "WalsheimRegular";
+  src: url('../fonts/gt-walsheim-web.ttf') format("truetype");
+  src: local('../fonts/gt-walsheim-web.ttf') format("truetype");
+}
+@font-face {
+  font-family: "WalsheimBold";
+  src: url('../fonts/gt-walsheim-bold-web.ttf') format("truetype");
+  src: local('../fonts/gt-walsheim-bold-web.ttf') format("truetype");
+}
+
+body {
+	font-family: "WalsheimRegular",Helvetica Neue,sans-serif;
+	/*background-color: rgb(250, 224, 206);*/
+	color: rgb(48, 30, 62);
+}
+
+body a {
+	text-decoration: none;
+}
+
+body h1 {
+	color: rgb(230, 56, 50);
+}
+
+form {
+  color: rgb(243, 179, 180);
+  /*background-color: rgb(255, 255, 255);*/
+}
+
+.white {
+  background-color: rgb(255, 255, 255);
+}
+
+.peach {
+  background-color: rgb(250, 224, 206);
+}

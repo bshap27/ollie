@@ -1,5 +1,5 @@
 import datetime
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, render_to_response
 from django.http import HttpResponse
 from .forms import PetForm, SignUpForm
 from django.utils import timezone
@@ -20,7 +20,9 @@ from django.contrib.auth.decorators import login_required
 #         # ...
 
 def index(request):
-    return render(request, 'intakeform/index.html', {})
+    bkgdcolor = "peach"
+    # return render(request, 'intakeform/index.html', {})
+    return render_to_response('intakeform/index.html', locals())
     # return HttpResponse("Hello, world. You're at the intake form index.")
 
 # def user_new(request):
