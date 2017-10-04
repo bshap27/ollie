@@ -17,6 +17,7 @@ from django.conf.urls import include, url
 from django.contrib import admin
 
 urlpatterns = [
-		url(r'^intakeform/', include('intakeform.urls')),
+		url(r'', include('intakeform.urls')),
+		# url(r'^intakeform/', include('intakeform.urls')),
     url(r'^admin/', admin.site.urls),
 ]

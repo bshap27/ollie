@@ -1,11 +1,9 @@
 import datetime
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from .forms import PetForm #, UserForm
-from django.shortcuts import redirect
+from .forms import PetForm, SignUpForm
 from django.utils import timezone
-from django.contrib.auth import authenticate, login
-from django.contrib.auth import logout
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 
 
@@ -37,6 +35,20 @@ def index(request):
 #     else:
 #         form = UserForm()
 #     return render(request, 'intakeform/user_edit.html', {'form': form})
+
+def signup(request):
+    if request.method == 'POST':
+        form = SignUpForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data.get('username')
+            raw_password = form.cleaned_data.get('password1')
+            user = authenticate(username=username, password=raw_password)
+            login(request, user)
+            return redirect('index')
+    else:
+        form = SignUpForm()
+    return render(request, 'intakeform/signup.html', {'form': form})
 
 @login_required
 def pet_new(request):
