@@ -1,11 +1,16 @@
 {% load staticfiles %}
 <html>
     <head>
-        <title>Ollie Intake Form</title>
+        <title>Ollie Interview</title>
     </head>
     <body>
         <div class="page-header">
             <h1><a href="/">Ollie Intake Form</a></h1>
+            {% if user.is_authenticated %}
+              <a href="{% url 'logout' %}">logout</a>
+            {% else %}
+              <a href="{% url 'login' %}">login</a> / <a href="{% url 'signup' %}">signup</a>
+            {% endif %}
         </div>
         <div class="content container">
             <div class="row">
