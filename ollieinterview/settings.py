@@ -28,7 +28,7 @@ SECRET_KEY = 'ij@t5eec&89a^-5e=p8g^e9*z3q5!26)=gczu#dgqq-$=xu%j%'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['ollie-intake-form.herokuapp.com']
+ALLOWED_HOSTS = ['ollie-intake-form.herokuapp.com', '127.0.0.1']
 
 
 # Application definition
