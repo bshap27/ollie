@@ -33,5 +33,23 @@ form {
 }
 
 .peach {
-  background-color: rgb(250, 224, 206);
+  background-color: rgb(249, 218, 201);
+}
+
+.hide {
+  display: none;
+}
+
+input[type=text], input[type=email], input[type=password] {
+    background: transparent;
+    border: none;
+    border-bottom: 1px dotted #000000;
+    margin-left: 8px;
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
 }

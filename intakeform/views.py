@@ -6,6 +6,8 @@ from django.utils import timezone
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 
+# import pdb
+
 
 def index(request):
     bkgdcolor = "peach"
@@ -29,7 +31,9 @@ def signup(request):
             return redirect('pet_new')
     else:
         form = SignUpForm()
+    # pdb.set_trace()
     return render(request, 'intakeform/signup.html', {'form': form})
+
 
 @login_required
 def pet_new(request):

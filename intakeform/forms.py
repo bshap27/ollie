@@ -11,9 +11,9 @@ class PetForm(forms.ModelForm):
         fields = ('name', 'primary_breed', 'mix', 'age')
 
 class SignUpForm(UserCreationForm):
-    first_name = forms.CharField(max_length=30, help_text='Required.')
-    last_name = forms.CharField(max_length=30, help_text='Required.')
-    username = forms.EmailField(max_length=254, help_text='Required.', label="Email")
+    first_name = forms.CharField(max_length=30, label="My first name is")
+    last_name = forms.CharField(max_length=30, label="My last name is")
+    username = forms.EmailField(max_length=254, label="My email is")
 
     class Meta:
         model = User
