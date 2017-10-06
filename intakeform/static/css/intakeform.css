@@ -89,7 +89,6 @@ button:focus {
   color: white;
   background-color: rgb(230, 56, 50);
   border-radius: 25px;
-  display: inline-block;
   font-weight: 400;
   text-align: center;
   white-space: nowrap;
