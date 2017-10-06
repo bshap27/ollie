@@ -5,14 +5,14 @@ $(document).ready(function(){
 			$('form[action="intake_form/"]').removeClass('hide')
 		})
 
-		// for each form field with class 'fieldWrapper[i]', on change, unhide the next form field.
+		// for each form input field with class 'fieldWrapper[i]', on change, unhide the next form field.
 		$("div.fieldWrapper input").on('keypress', function(){
 			if ($(this).attr('id') != 'id_breed_1') {	
 				showNextField(this);
 			}
 		})
 
-		// can't apply below generally to all selects because of cascading conditional selections
+		// can't apply the above function generally to all SELECTS because of cascading conditional selections
 		$("div.fieldWrapper select").on('change', function(){
 			var select_whitelist = ['id_fixed', 'id_active', 'id_weight', 'id_build']
 			if (select_whitelist.indexOf($(this).attr('id')) > -1) {
@@ -30,14 +30,14 @@ $(document).ready(function(){
 
 		function showNextField(changed, index_inc = 1) {
 			next = findNextField(changed, index_inc)
-			$(changed).css('border-bottom', '1px solid #000000')
+			$(changed).css('border-bottom', '1px solid rgb(230, 46, 37)')
 			if (next.length > 0) {
 				next.removeClass('hide')
 			} //else { // reached the last form field
 				// $('button[type="submit"]').removeClass('hide')
 			// }
 			if (findNextField(changed, 2).length == 0) {
-				$('button[type="submit"]').removeClass('hide') // show submit button when you've reached second to last field.
+				$('button[type="submit"]').removeClass('hide') // show submit button when you've reached second to last field, since the last field is pre-populated.
 			}
 		}
 
@@ -49,8 +49,9 @@ $(document).ready(function(){
 			$('label[for="id_birth"]').text(pet_name + ' was born in')
 			$('label[for="id_active"]').text('I would describe ' + pet_name + ' as')
 			$('label[for="id_weight"]').text(pet_name + ' is about')
-			$('label[for="id_build"]').text('I would describe ' + pet_name + ' as')
+			$('label[for="id_build"]').text('I would describe ' + pet_name + '\'s build as')
 			$('label[for="id_allergies"]').text(pet_name + ' is allergic to')
+			// $('label[for="id_eats"]').text(pet_name + ' currently eats')
 		})
 
 		// show appropriate # of breed fields depending on mix selection

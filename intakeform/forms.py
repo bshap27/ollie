@@ -1,14 +1,14 @@
 from django import forms
-from .models import Pet
+# from .models import Pet
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 
 
-class PetForm(forms.ModelForm):
+# class PetForm(forms.ModelForm):
 
-    class Meta:
-        model = Pet
-        fields = ('name', 'primary_breed', 'mix', 'age')
+#     class Meta:
+#         model = Pet
+#         fields = ('name', 'primary_breed', 'mix', 'age')
 
 class SignUpForm(UserCreationForm):
     first_name = forms.CharField(max_length=30, label="My first name is")
@@ -35,3 +35,4 @@ class IntakeForm(forms.Form):
     weight = forms.IntegerField(label='', label_suffix='', help_text="pounds", min_value=1)
     build = forms.ChoiceField(choices=[('',''),('skinny','skinny'), ('ideal','ideal'), ('chubby','chubby')], label='', label_suffix='')
     allergies = forms.CharField(max_length=200, label='', label_suffix='', initial="nothing")
+    # eats = forms.ChoiceField(choices=[('',''),('dry food','dry food'), ('wet and dry food','wet and dry food'), ('wet food','wet food'), ('cooked food','cooked food')], label='', label_suffix='')

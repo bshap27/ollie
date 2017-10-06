@@ -11,7 +11,6 @@
 
 body {
 	font-family: "WalsheimRegular",Helvetica Neue,sans-serif;
-	/*background-color: rgb(250, 224, 206);*/
 	color: rgb(48, 30, 62);
 }
 
@@ -25,7 +24,6 @@ body h1 {
 
 form {
   color: rgb(243, 179, 180);
-  /*background-color: rgb(255, 255, 255);*/
 }
 
 .white {
@@ -43,20 +41,20 @@ form {
 input {
     background: transparent;
     border: none;
-    border-bottom: 1px dotted #000000;
+    border-bottom: 1px dotted rgb(230, 46, 37);
     margin-left: 8px;
     width: 200px;
+    color: rgb(230, 46, 37);
 }
 
 select, #id_weight {
    -webkit-appearance: none; 
    -moz-appearance: none;
    appearance: none;       /* remove default arrow */
-   /*border: none;*/
-   /*border-bottom: 1px dotted #000000;*/
    border-top:    none;
    border-right:  none;
-   border-bottom: 1px dotted #000000;
+   border-bottom: 1px dotted rgb(230, 46, 37);
+   color: rgb(230, 46, 37);
    border-left:   none;
    border-image: none;
    border-radius: 0px;
@@ -73,9 +71,9 @@ button:focus {
     outline: none;
 }
 
-.flex-container {
-  display: flex; /* or inline-flex */
-  flex-direction: row;
+/*.flex-container {
+  display: flex;
+  flex-direction: row; 
   flex-wrap: nowrap;
   justify-content: flex-start;
   align-items: flex-start;
@@ -85,7 +83,7 @@ button:focus {
 .flex-item {
   align-self: flex-start;
   width: 500px;
-}
+}*/
 
 .ollie-button {
   color: white;
@@ -114,5 +112,10 @@ button:focus {
 }
 
 .purple {
+  color: rgb(48, 30, 62);
+}
+
+h2.purple {
+  font-size: 60px;
   color: rgb(48, 30, 62);
 }
