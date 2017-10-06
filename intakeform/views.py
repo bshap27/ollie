@@ -1,23 +1,12 @@
 import datetime
 from django.shortcuts import render, redirect, render_to_response
 from django.http import HttpResponse
-from .forms import PetForm, SignUpForm
+from .forms import PetForm, SignUpForm, IntakeForm
 from django.utils import timezone
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-
 # import pdb
-
-
-def index(request):
-    bkgdcolor = "peach"
-    # return render(request, 'intakeform/index.html', {})
-    return render_to_response('intakeform/index.html', locals())
-# OR....
-# def my_view(request):
-#     posts = BlogPosts.objects.all()
-#     return render(request, 'posts.html', locals())
-
+# pdb.set_trace()
 
 def signup(request):
     if request.method == 'POST':
@@ -31,8 +20,36 @@ def signup(request):
             return redirect('pet_new')
     else:
         form = SignUpForm()
-    # pdb.set_trace()
     return render(request, 'intakeform/signup.html', {'form': form})
+
+def intake_form(request):
+    if request.method=='POST':
+        form = IntakeForm(request.POST)
+        if form.is_valid():
+            cd = form.cleaned_data
+            # bkgdcolor = "peach"
+            pups_name = cd.get('pups_name')
+            weight = cd.get('weight')
+            breed_type = cd.get('breed_type')
+            breed1 = cd.get('breed_1')
+            breed2 = cd.get('breed_2')
+
+            if breed_type == 'mix':
+                breed = 'mix'
+            elif breed_type == 'single':
+                breed = breed1
+            elif breed_type == 'double':
+                breed = breed1 + 'and' + breed2 + 'mix'
+            return render(request, 'intakeform/intake_summary.html', {'breed': breed, 'pups_name': pups_name, 'weight': weight})
+    else:
+        form = IntakeForm()
+    return render(request, 'intakeform/intake_form.html', {'form': form})
+
+def intake_summary(request):
+#     pdb.set_trace()
+    # 'bkgdcolor': 'peach'
+#     return render(request, 'intakeform/intake_summary.html', {})
+    return
 
 
 @login_required

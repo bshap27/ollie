@@ -1,0 +1,30 @@
+{% extends 'intakeform/base.html' %}
+
+{% block content %}
+
+{% if not user.is_authenticated %}
+<div align='center'>
+    <a href="#" id="show_intake_form" class='ollie-button'>START TRIAL</a>
+</div>
+{% endif %}
+
+<form action="intake_form/" method="POST" class="hide" align="center" novalidate>
+		{% csrf_token %}
+
+    {% for field in form %}
+    	{% if forloop.counter == 1 %}
+    		<div class="fieldWrapper" id="field-1">
+    	{% else %}
+    		<div class="fieldWrapper hide" id="field-{{ forloop.counter }}">
+    	{% endif %}
+        {{ field.errors }}
+        {{ field.label_tag }} {{ field }}
+        {% if field.help_text %}
+        <span class="help">{{ field.help_text|safe }}</span>
+        {% endif %}
+    		</div>
+		{% endfor %}
+
+    <button type="submit" class="hide">Submit</button>
+</form>
+{% endblock %}

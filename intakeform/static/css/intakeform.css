@@ -40,16 +40,79 @@ form {
   display: none;
 }
 
-input[type=text], input[type=email], input[type=password] {
+input {
     background: transparent;
     border: none;
     border-bottom: 1px dotted #000000;
     margin-left: 8px;
+    width: 200px;
 }
+
+select, #id_weight {
+   -webkit-appearance: none; 
+   -moz-appearance: none;
+   appearance: none;       /* remove default arrow */
+   /*border: none;*/
+   /*border-bottom: 1px dotted #000000;*/
+   border-top:    none;
+   border-right:  none;
+   border-bottom: 1px dotted #000000;
+   border-left:   none;
+   border-image: none;
+   border-radius: 0px;
+   width: 200px;
+   background: none;
+   text-align-last:center;
+}
+
 
 input:focus,
 select:focus,
 textarea:focus,
 button:focus {
     outline: none;
+}
+
+.flex-container {
+  display: flex; /* or inline-flex */
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin-bottom: 50px;
+}
+
+.flex-item {
+  align-self: flex-start;
+  width: 500px;
+}
+
+.ollie-button {
+  color: white;
+  background-color: rgb(230, 56, 50);
+  border-radius: 25px;
+  display: inline-block;
+  font-weight: 400;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  border: 1px solid transparent;
+  padding: .5rem 2.5rem;
+  font-size: 1rem;
+  line-height: 1.25;
+  transition: all .15s ease-in-out
+}
+
+.ollie-button:hover {
+  text-decoration: none;
+  color: white;
+  background-color: rgb(230, 46, 37);
+}
+
+.purple {
+  color: rgb(48, 30, 62);
 }
