@@ -7,7 +7,7 @@ $(document).ready(function(){
 
 		// for each form input field with class 'fieldWrapper[i]', on change, unhide the next form field.
 		$("div.fieldWrapper input").on('keypress', function(){
-			if ($(this).attr('id') != 'id_breed_1') {	
+			if ($(this).attr('id') != 'id_breed1') {	
 				showNextField(this);
 			}
 		})
@@ -60,7 +60,7 @@ $(document).ready(function(){
 			switch(selection) {
 		    case 'single':
 	        showNextField(this);
-	        $('#id_breed_2').parents('div.fieldWrapper').addClass('hide');
+	        $('#id_breed2').parents('div.fieldWrapper').addClass('hide');
 	        hideFutureEmptyField('#id_sex')
 	        break;
 		    case 'double':
@@ -69,14 +69,14 @@ $(document).ready(function(){
 	        hideFutureEmptyField('#id_sex')
 	        break;
 		    default:
-		    	$('#id_breed_1').parents('div.fieldWrapper').addClass('hide');
-	        $('#id_breed_2').parents('div.fieldWrapper').addClass('hide');
+		    	$('#id_breed1').parents('div.fieldWrapper').addClass('hide');
+	        $('#id_breed2').parents('div.fieldWrapper').addClass('hide');
 	        showNextField(this, 3);
 	        break;
 			}
 		});
 		
-		$('input#id_breed_1').on('keypress', function(){
+		$('input#id_breed1').on('keypress', function(){
 			if ($('select#id_breed_type').val() == 'single'){
 				showNextField(this, 2);
 			}
@@ -93,8 +93,8 @@ $(document).ready(function(){
 			var selection = $(this).val(),
 				word = selection == 'M' ? 'neutered' : 'spayed',
 				blank = new Option('', ''),
-				yes = new Option(word, 'Y'),
-				no = new Option('not ' + word, 'N');
+				yes = new Option(word, "True"),
+				no = new Option('not ' + word, "False");
 			$('select#id_fixed option').remove()
 			$('select#id_fixed').append($(blank)).append($(yes)).append($(no));
 			showNextField(this);
