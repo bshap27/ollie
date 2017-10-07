@@ -118,3 +118,8 @@ h2.purple {
   font-size: 60px;
   color: rgb(48, 30, 62);
 }
+
+.errorlist {
+  list-style: none;
+  color: rgb(255,165,0);
+}

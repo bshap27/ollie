@@ -1,8 +1,12 @@
 $(document).ready(function(){
 
-		$('#show_intake_form').on('click', function(){
-			$(this).css('display','none')
+		function showIntakeForm(){
+			$('#show_intake_form').css('display','none')
 			$('form[action="intake_form/"]').removeClass('hide')
+		}
+		
+		$('#show_intake_form').on('click', function(){
+			showIntakeForm()
 		})
 
 		// for each form input field with class 'fieldWrapper[i]', on change, unhide the next form field.
@@ -14,8 +18,8 @@ $(document).ready(function(){
 
 		// can't apply the above function generally to all SELECTS because of cascading conditional selections
 		$("div.fieldWrapper select").on('change', function(){
-			var select_whitelist = ['id_fixed', 'id_active', 'id_weight', 'id_build']
-			if (select_whitelist.indexOf($(this).attr('id')) > -1) {
+			var select_blacklist = ['id_sex']
+			if (select_blacklist.indexOf($(this).attr('id')) == -1) {
 				showNextField(this);
 			}
 		})
@@ -43,8 +47,12 @@ $(document).ready(function(){
 
 		// add pet's name to fields once it is populated
 		$('input#id_pups_name').on('change', function(){
+			updatePetName()
+		})
+
+		function updatePetName() {
 			var pet_name = $('input[name="pups_name"]').val()
-			$('label[for="id_breed_type"]').text(pet_name + ' is a')
+			$('label[for="id_breed_type"]').text(pet_name + ' is')
 			$('label[for="id_sex"]').text(pet_name + ' is a')
 			$('label[for="id_birth"]').text(pet_name + ' was born in')
 			$('label[for="id_active"]').text('I would describe ' + pet_name + ' as')
@@ -52,7 +60,7 @@ $(document).ready(function(){
 			$('label[for="id_build"]').text('I would describe ' + pet_name + '\'s build as')
 			$('label[for="id_allergies"]').text(pet_name + ' is allergic to')
 			// $('label[for="id_eats"]').text(pet_name + ' currently eats')
-		})
+		}
 
 		// show appropriate # of breed fields depending on mix selection
 		$('select#id_breed_type').on('change', function(){
@@ -99,4 +107,35 @@ $(document).ready(function(){
 			$('select#id_fixed').append($(blank)).append($(yes)).append($(no));
 			showNextField(this);
 		})
+
+		$(window).keydown(function(event){ // don't submit form on enter
+	    if(event.keyCode == 13) {
+	      event.preventDefault();
+	      return false;
+	    }
+	  });
+
+		// when redirect to form with validation, do the following:
+
+		// show form automatically
+		if ($("div.fieldWrapper input, div.fieldWrapper select").val().length > 0) {
+			showIntakeForm()
+		}
+
+		// populate pet's name if already entered
+		if ($('input[name="pups_name"]').val().length) {
+			updatePetName()
+		}
+
+		// show all fields that have entries plus the next empty field
+		$("div.fieldWrapper input, div.fieldWrapper select").each(function(){
+			if ($(this).val().length){
+				showNextField(this,0);
+				var blacklist = ['id_breed1', 'id_breed_type']
+				if (blacklist.indexOf($(this).attr('id')) == -1) {
+					showNextField(this);
+				}
+			}
+		})
+
 })

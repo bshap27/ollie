@@ -54,8 +54,12 @@ def intake_form(request):
             pet.save()
 
             return render(request, 'intakeform/intake_summary.html', {'pet': pet, 'bkgdcolor': "peach"})
+        else:
+            request.session['form_data'] = request.POST
+            return redirect('/')
     else:
-        form = IntakeForm()
+        form_data = request.session.get('form_data', None)
+        form = IntakeForm(form_data)
     return render(request, 'intakeform/intake_form.html', {'form': form})
 
 
