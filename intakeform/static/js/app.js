@@ -93,8 +93,8 @@ $(document).ready(function(){
 			var selection = $(this).val(),
 				word = selection == 'M' ? 'neutered' : 'spayed',
 				blank = new Option('', ''),
-				yes = new Option(word, 'Y'),
-				no = new Option('not ' + word, 'N');
+				yes = new Option(word, "True"),
+				no = new Option('not ' + word, "False");
 			$('select#id_fixed option').remove()
 			$('select#id_fixed').append($(blank)).append($(yes)).append($(no));
 			showNextField(this);
