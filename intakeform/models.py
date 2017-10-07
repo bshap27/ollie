@@ -8,7 +8,8 @@ from django.contrib.auth.models import User
 
 
 class Pet(models.Model):
-    user = models.ForeignKey('auth.User')
+    # user = models.ForeignKey('auth.User')
+    userprofile = models.ForeignKey('UserProfile')
     name = models.CharField(max_length=200)
     mix = models.BooleanField()
     breed1 = models.CharField(max_length=200, blank=True, null=True)
@@ -25,6 +26,14 @@ class Pet(models.Model):
 
     def __str__(self):
         return self.name
+
+    def breed_mix(self):
+        if self.mix == True:
+            return 'mix'
+        elif not bool(self.breed2): # breed2 is empty
+            return self.breed1
+        else:
+            return self.breed1 + ' and ' + self.breed2 + ' mix'
 
 # http://www.b-list.org/weblog/2006/jun/06/django-tips-extending-user-model/
 class UserProfile(models.Model):

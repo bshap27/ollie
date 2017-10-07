@@ -78,7 +78,7 @@ WSGI_APPLICATION = 'ollieinterview.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'olliedb',
+        'NAME': 'olliedbtest',
         'USER': 'becca',
         'PASSWORD': 'youshallpass',
         'HOST': 'localhost',

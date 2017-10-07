@@ -19,13 +19,13 @@ class SignUpForm(UserCreationForm):
         model = User
         fields = ('first_name', 'last_name', 'username', 'password1', 'password2', )
 
-class IntakeForm(forms.Form):
-    name = forms.CharField(max_length=30, label="My name is", label_suffix='')
+class IntakeForm(forms.ModelForm):
+    full_name = forms.CharField(max_length=30, label="My name is", label_suffix='')
     pups_name = forms.CharField(max_length=30, label="and my pup\'s name is", label_suffix='')
     email = forms.EmailField(max_length=254, label="My email is", label_suffix='')
     breed_type = forms.ChoiceField(choices=(('', ''),('single','single breed'), ('double','combo of two breeds'), ('mix','mix')), label="", label_suffix='')
-    breed_1 = forms.CharField(max_length=30, label='of a', label_suffix='', required=False)
-    breed_2 = forms.CharField(max_length=30, label='and a', label_suffix='', required=False)
+    breed1 = forms.CharField(max_length=30, label='of a', label_suffix='', required=False)
+    breed2 = forms.CharField(max_length=30, label='and a', label_suffix='', required=False)
     sex = forms.ChoiceField(choices=[('',''),('M','He'), ('F','She')], label="", label_suffix='')
     fixed = forms.ChoiceField(choices=[(False,'not neutered'),(True, 'neutered')], label="and is", label_suffix='')
     # birth_month = forms.ChoiceField(choices=[('',''),('Jan', 'Jan'), ('Feb', 'Feb'), ('Mar', 'Mar'), ('Apr', 'Apr'), ('May', 'May'), ('Jun', 'Jun'), ('Jul', 'Jul'), ('Aug', 'Aug'), ('Sept', 'Sept'), ('Oct', 'Oct'), ('Nov', 'Nov'), ('Dec', 'Dec')], label="", label_suffix='')
@@ -37,9 +37,9 @@ class IntakeForm(forms.Form):
     allergies = forms.CharField(max_length=200, label='', label_suffix='', initial="nothing")
     # eats = forms.ChoiceField(choices=[('',''),('dry food','dry food'), ('wet and dry food','wet and dry food'), ('wet food','wet food'), ('cooked food','cooked food')], label='', label_suffix='')
 
-    # class Meta:
-    #     model = Pet
-    #     fields = ('breed_1','breed_2','sex','fixed','birth','active','weight','build','allergies')
-    # class Meta:
-    #     model = UserProfile
-    #     fields = ('name', 'email')
+    class Meta:
+        model = Pet
+        fields = ('pups_name', 'breed_type', 'breed1','breed2','sex','fixed','birth','active','weight','build','allergies')
+    class Meta:
+        model = UserProfile
+        fields = ('full_name', 'email')
