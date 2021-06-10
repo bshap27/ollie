@@ -7,7 +7,7 @@ name = "pypi"
 
 certifi = "==2017.7.27.1"
 chardet = "==3.0.4"
-django = "==1.11.5"
+django = "==2.2.24"
 "flake8" = "==3.4.1"
 gunicorn = "==19.7.1"
 idna = "==2.6"
