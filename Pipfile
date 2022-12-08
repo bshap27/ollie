@@ -5,7 +5,7 @@ name = "pypi"
 
 [packages]
 
-certifi = "==2017.7.27.1"
+certifi = "==2022.12.7"
 chardet = "==3.0.4"
 django = "==1.11.5"
 "flake8" = "==3.4.1"
